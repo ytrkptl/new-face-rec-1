@@ -51,7 +51,7 @@ class App extends Component {
   componentDidMount() {
     const token = window.sessionStorage.getItem('token');
     if (token) {
-      fetch(`${process.env.REACT_APP_SIGN_IN_URL}`, {
+      fetch(`${process.env.REACT_APP_ENDPOINT_URL}/signin`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ class App extends Component {
         .then(resp => resp.json())
         .then(data => {
           if(data && data.id) {
-            fetch(`${process.env.REACT_APP_PROFILE_URL_BEGINNING}/${data.id}`, {
+            fetch(`${process.env.REACT_APP_ENDPOINT_URL}/profile/${data.id}`, {
               method: 'GET',
               headers: {
                 'Content-Type': 'application/json',
@@ -136,7 +136,7 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
-      fetch(`${process.env.REACT_APP_IMAGE_URL}`, {
+      fetch(`${process.env.REACT_APP_ENDPOINT_URL}/imageurl`, {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
@@ -149,7 +149,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         if (response) {
-          fetch(`${process.env.REACT_APP_IMAGE}`, {
+          fetch(`${process.env.REACT_APP_ENDPOINT_URL}/image`, {
             method: 'put',
             headers: {
               'Content-Type': 'application/json',
@@ -179,7 +179,7 @@ class App extends Component {
       // therefore the below fetch function, which removes it from
       // redis first and then call the removeAuthTokenFromSession func
       // above
-      fetch(`${process.env.REACT_APP_SIGN_OUT_URL}`, {
+      fetch(`${process.env.REACT_APP_ENDPOINT_URL}/signout`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
