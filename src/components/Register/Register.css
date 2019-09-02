@@ -42,12 +42,12 @@
 
 .registerLegend {
 	margin-left: 0;
-    margin-right: 0;
-        padding-left: 0;
-    padding-right: 0;
-    font-weight: 600;
-    font-size: 3rem;
-    box-sizing: border-box;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  font-weight: 600;
+  font-size: 3rem;
+  box-sizing: border-box;
 }
 
 .belowLegendDiv {
@@ -67,17 +67,18 @@
 	background-color: transparent;
 	-webkit-appearance: none;
 	border-style: solid;
-    border-width: 1px;
-    width: 100%;
+	border-width: 1px;
+	width: 100%;
 }
 .belowLegendInput:hover {
 	background-color: #000;
 	border-color: white;
+	color: white;
 }
 
 .passwordInRegisterDiv {
 	margin-top: 1rem;
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .registerButton {
