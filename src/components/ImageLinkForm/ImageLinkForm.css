@@ -117,7 +117,7 @@
 @media screen and (max-width: 600px) {
 	.form {
 		width: 80%;
-		margin: ;
+		/*margin: ;*/
 	}
 	.textAboveForm {
 		max-width: 70%;
