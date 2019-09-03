@@ -35,6 +35,7 @@
 	-webkit-animation: flash ease-out 7s infinite;
 	-moz-animation: flash ease-out 7s infinite;
 	animation: flash ease-out 7s infinite;
+	animation-delay: 0.7s;
 }
 
 @-webkit-keyframes flash {

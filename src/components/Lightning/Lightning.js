@@ -1,6 +1,6 @@
 import React, { createRef, useEffect } from 'react'
 import LightningModal from '../LightningModal/LightningModal';
-import ThunderSound from './thunder2.mp3';
+import ThunderSound from './thunder4.mp3';
 import './Lightning.css';
 
 const Lightning = ({lightningOn}) => {
