@@ -12,6 +12,10 @@ import Footer from './components/Footer/Footer';
 
 import './App.css';
 
+// Create-React-App automatically detects and uses env varialbes
+// prefixed with REACT_APP during local development
+// The config vars for production are stored in heroku itself.
+
 const initialState = {
   input: '',
   imageUrl: '',
