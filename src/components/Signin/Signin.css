@@ -13,7 +13,8 @@
   display: flex;
   justify-content: center;
   box-sizing: border-box;
-  text-align: center;
+	text-align: center;
+	background-color: rgba(255, 255, 255, 0.747);
 }
 
 .signinMain {
@@ -68,7 +69,13 @@
 	border-width: 1px;
 	width: 100%;
 	margin-bottom: 10px;
+	outline: none;
 }
+
+.belowLegendInputInSignin::placeholder {
+	color: rgb(24, 24, 24);
+}
+
 .belowLegendInputInSignin:hover {
 	background-color: #000;
 	border-color: white;

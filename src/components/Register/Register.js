@@ -74,6 +74,7 @@ class Register extends React.Component {
                   type="text"
                   name="name"
                   id="name"
+                  placeholder="Enter Name"
                   onChange={this.onNameChange}
                 />
               </div>

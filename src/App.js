@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Particles from 'react-particles-js';
+import ParticlesComponent from './components/Particles/Particles';
 import Navigation from './components/Navigation/Navigation';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import Signin from './components/Signin/Signin';
@@ -8,20 +8,9 @@ import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import Modal from './components/Modal/Modal';
 import Profile from './components/Profile/Profile';
+import Footer from './components/Footer/Footer';
 
 import './App.css';
-
-const particlesOptions = {
-  particles: {
-    number: {
-      value: 30,
-      density: {
-        enable: true,
-        value_area: 150
-      }
-    }
-  }
-}
 
 const initialState = {
   input: '',
@@ -211,9 +200,7 @@ class App extends Component {
     const { isSignedIn, imageUrl, route, boxes, isProfileOpen, user } = this.state;
     return (
       <div className="App">
-        <Particles className='particles'
-          params={particlesOptions}
-        />
+        <ParticlesComponent />
         <Navigation 
           className="row1"
           isSignedIn={isSignedIn} 
@@ -256,7 +243,7 @@ class App extends Component {
             )
         }
         </div>
-        <footer className="row3">Footer</footer>
+        <Footer className="row3"/>
       </div>
     );
   }

@@ -1,13 +1,11 @@
 .registerArticle {
-	/*ba mv4 w-100 w-50-m w-25-l*/
 	margin-right: auto;
 	margin-left: auto;
 	margin-top: 2rem;
 	margin-bottom: 2rem;
 	max-width: 400px;
 	width: 100%;
-	/*32rem*/
-	box-shadow: 4px 4px 8px 0 rgba( 0, 0, 0, .2 );
+	box-shadow: 4px 4px 8px 0 rgba( 0, 0, 0, 0.2 );
 	border-radius: 0.5rem;
 	border-color: rgba( 0, 0, 0, .1 );
 	border-style: solid;
@@ -15,7 +13,8 @@
   display: flex;
   justify-content: center;
   box-sizing: border-box;
-  text-align: center;
+	text-align: center;
+	background-color: rgba(255, 255, 255, 0.747);
 }
 
 .registerMain {
@@ -69,7 +68,13 @@
 	border-style: solid;
 	border-width: 1px;
 	width: 100%;
+	outline: none;
 }
+
+.belowLegendInput::placeholder {
+	color: rgb(24, 24, 24);
+}
+
 .belowLegendInput:hover {
 	background-color: #000;
 	border-color: white;
@@ -117,11 +122,12 @@
   display: block;
   box-sizing: border-box;
   cursor: pointer;
-  margin-top: 10px;
+	margin-top: 10px;
+	font-size: 16px;
+
 }
 
 .signinLinkInRegister:hover {
-	opacity: 0.5;
 	transform: scale(1.05);
 }
 @media screen and (max-width: 600px) {
