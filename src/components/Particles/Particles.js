@@ -2,7 +2,7 @@ import React from 'react';
 import Particles from 'react-particles-js';
 import Drop from './droplet.jpg';
 
-const ParticlesComponent = () =>  {
+const ParticlesComponent = ({lightningOn}) =>  {
   
   let particlesOptions = {
     particles: {
@@ -16,7 +16,7 @@ const ParticlesComponent = () =>  {
       shape: {
         type: "image",
         image: {
-          src: "https://emojis.wiki/emoji-pics/messenger/droplet-messenger.png",
+          src: `${Drop}`,
         }
       },
       size: {
@@ -35,7 +35,8 @@ const ParticlesComponent = () =>  {
     },
   }
   return (
-    <Particles className='particles flashit'
+    lightningOn===true &&
+    <Particles className='particles'
       params={particlesOptions}
     />
   )

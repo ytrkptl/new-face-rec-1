@@ -7,7 +7,10 @@ class Register extends React.Component {
     this.state = {
       email: '',
       password: '',
-      name: ''
+      name: '',
+      error: `Something went wrong. 
+              Please try again.`,
+      showError: false
     }
   }
 
@@ -55,9 +58,15 @@ class Register extends React.Component {
               this.props.onRouteChange('home');
             }
           })
+        } else {
+          throw Error();
         }
       })
-      .catch(console.log) 
+      .catch(err => {
+        if(err) {
+          this.setState({showError: true})
+        }
+      })
   }
 
   render() {
@@ -67,6 +76,10 @@ class Register extends React.Component {
           <div className="registerMeasure">
             <fieldset id="sign_up" className="registerFieldset">
               <legend className="registerLegend">Register</legend>
+              {
+                this.state.showError && 
+                <p className="registerErrorDisplay">{this.state.error}</p>
+              }
               <div className="belowLegendDiv">
                 <label className="belowLegendLabel" htmlFor="name">Name</label>
                 <input

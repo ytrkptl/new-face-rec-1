@@ -1,16 +1,17 @@
 import React from 'react';
 import Tilt from 'react-tilt';
-import brain from './brain.png';
+import brain from './cloudPic.png';
 import './Logo.css';
 
-const Logo = () => {
+const Logo = ({ showLightning }) => {
   return (
-    <div className='TiltParentDiv TiltParentDivMin'>
+    <div className='TiltParentDiv TiltParentDivMin' onClick={()=>showLightning()}>
       <Tilt 
       	className="Tilt" 
       	options={{ max : 55 }}>
         <div className="Tilt-inner">
-          <img style={{paddingTop: '5px'}} alt='logo' src={brain}/>
+          <span className="logoEmoji" role="img" aria-label="thunderstorm">⛈️</span>
+          <span className="logoText">Click me to toggle rain.</span>
         </div>
       </Tilt>
     </div>

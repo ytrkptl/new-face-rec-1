@@ -3,11 +3,11 @@ import ProfileIcon from '../Profile/ProfileIcon';
 import Logo from '../Logo/Logo';
 import './Navigation.css';
 
-const Navigation = ({ onRouteChange, isSignedIn, toggleModal, imageToChange }) => {
+const Navigation = ({ onRouteChange, isSignedIn, toggleModal, imageToChange, showLightning }) => {
     if (isSignedIn) {
       return (
         <nav className="nav">
-          <Logo />
+          <Logo showLightning={showLightning} />
           <div className="gridCol2">
             <ProfileIcon imageToChange={imageToChange} onRouteChange={onRouteChange} toggleModal={toggleModal}/>
           </div>
@@ -16,7 +16,7 @@ const Navigation = ({ onRouteChange, isSignedIn, toggleModal, imageToChange }) =
     } else {
       return (
         <nav className="nav">
-          <Logo />
+          <Logo showLightning={showLightning} />
           <div className="divInNav">
             <button onClick={() => onRouteChange('signin')} className='customLink'>Sign In</button>
             <button onClick={() => onRouteChange('register')} className='customLink'>Register</button>

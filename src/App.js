@@ -9,6 +9,7 @@ import Rank from './components/Rank/Rank';
 import Modal from './components/Modal/Modal';
 import Profile from './components/Profile/Profile';
 import Footer from './components/Footer/Footer';
+import Lightning from './components/Lightning/Lightning';
 
 import './App.css';
 
@@ -23,6 +24,7 @@ const initialState = {
   route: 'signin',
   isSignedIn: false,
   isProfileOpen: false,
+  lightningOn: false,
   imageToChange: 'http://tachyons.io/img/logo.jpg',
   user: {
     id: '',
@@ -200,17 +202,31 @@ class App extends Component {
     }))
   }
 
+  showLightning = () => {
+    this.setState(prevState => ({
+      ...prevState,
+      lightningOn: !prevState.lightningOn
+    }))
+  }
+
   render() {
-    const { isSignedIn, imageUrl, route, boxes, isProfileOpen, user } = this.state;
+    const { isSignedIn, imageUrl, route, boxes, isProfileOpen, lightningOn, user } = this.state;
     return (
       <div className="App">
-        <ParticlesComponent />
+        {
+          lightningOn &&
+          <>
+            <ParticlesComponent lightningOn={lightningOn} />
+            <Lightning lightningOn={lightningOn} />
+          </>
+        }
         <Navigation 
           className="row1"
           isSignedIn={isSignedIn} 
           onRouteChange={this.onRouteChange} 
           toggleModal={this.toggleModal}
           imageToChange={this.state.imageToChange}
+          showLightning= {this.showLightning}
         />
         { isProfileOpen &&
           <Modal>

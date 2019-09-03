@@ -6,7 +6,10 @@ class Signin extends React.Component {
     super(props);
     this.state = {
       signInEmail: '',
-      signInPassword: ''
+      signInPassword: '',
+      error: `Something went wrong. 
+              Please try again.`,
+      showError: false
     }
   }
 
@@ -33,9 +36,15 @@ class Signin extends React.Component {
           this.props.saveAuthTokenInSession(data.token)
           this.props.loadUser(data.user)
           this.props.onRouteChange('home');
+        } else {
+          throw Error();
         }
       })
-      .catch(console.log)
+      .catch(err => {
+        if(err) {
+          this.setState({showError: true})
+        }
+      })
   }
 
   render() {
@@ -46,6 +55,10 @@ class Signin extends React.Component {
           <div className="signinMeasure">
             <fieldset id="sign_up" className="signinFieldset">
               <legend className="signinLegend">Sign In</legend>
+              {
+                this.state.showError && 
+                <p className="signinErrorDisplay">{this.state.error}</p>
+              }
               <div className="belowLegendDivInSignin">
                 <label className="belowLegendLabelInSignin" htmlFor="email-address">Email</label>
                 <input

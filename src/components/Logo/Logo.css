@@ -15,8 +15,19 @@
 }
 
 .Tilt-inner {
-	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	padding: 0;
 }
+
+.logoEmoji {
+	font-size: 62px;
+}
+
+.logoText {
+	color: white;
+}
+
 @media screen and (max-width: 400px) {
 	.TiltParentDivMin {
 		padding-left: 10px;
