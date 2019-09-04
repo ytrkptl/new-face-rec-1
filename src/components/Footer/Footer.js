@@ -4,24 +4,15 @@ import './Footer.css';
 const Footer = () => {
 	return(
 		<footer className="FooterClass">
-			<div className="FooterCol1">
-				<a className="FooterLinkStyle" href="/">Credits</a>
-				<a className="FooterLinkStyle" href="/">Link</a>
-				<a className="FooterLinkStyle" href="/">Link</a>
-				<a className="FooterLinkStyle" href="/">Link</a>
+			<h3 className="FooterTitle" >Credits/Links</h3>
+			<div className="FooterGrid">
+					<a className="FooterLinkStyle" href="http://clipart-library.com/clipart/114791.htm">Thunderstorm Logo</a>
+					<a className="FooterLinkStyle" href="/">My Portfolio</a>
+					<a className="FooterLinkStyle" href="/">GitHub</a>
+					<a className="FooterLinkStyle" href="/">LinkedIn</a>
 			</div>
-			<div className="FooterCol2">
-				<a className="FooterLinkStyle" href="/">Link</a>
-				<a className="FooterLinkStyle" href="/">Link</a>
-				<a className="FooterLinkStyle" href="/">Link</a>
-				<a className="FooterLinkStyle" href="/">Link</a>
-			</div>
-			<div className="FooterCol3">
-				<a className="FooterLinkStyle" href="/">Link</a>
-				<a className="FooterLinkStyle" href="/">Link</a>
-				<a className="FooterLinkStyle" href="/">Link</a>
-				<a className="FooterLinkStyle" href="/">Link</a>
-			</div>
+			<hr/>
+			<p className="FooterAuthor" >Created by: Yatrik Patel, September 4, 2019</p>
 		</footer>
 	)
 }

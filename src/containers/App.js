@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import ParticlesComponent from './components/Particles/Particles';
-import Navigation from './components/Navigation/Navigation';
-import FaceRecognition from './components/FaceRecognition/FaceRecognition';
-import Signin from './components/Signin/Signin';
-import Register from './components/Register/Register';
-import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
-import Rank from './components/Rank/Rank';
-import Modal from './components/Modal/Modal';
-import Profile from './components/Profile/Profile';
-import Footer from './components/Footer/Footer';
-import Lightning from './components/Lightning/Lightning';
+import ParticlesComponent from '../components/Particles/Particles';
+import Navigation from '../components/Navigation/Navigation';
+import FaceRecognition from '../components/FaceRecognition/FaceRecognition';
+import Signin from '../components/Signin/Signin';
+import Register from '../components/Register/Register';
+import ImageLinkForm from '../components/ImageLinkForm/ImageLinkForm';
+import Rank from '../components/Rank/Rank';
+import Modal from '../components/Modal/Modal';
+import Profile from '../components/Profile/Profile';
+import Footer from '../components/Footer/Footer';
+import Lightning from '../components/Lightning/Lightning';
 
 import './App.css';
 

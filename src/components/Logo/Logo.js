@@ -1,5 +1,6 @@
 import React from 'react';
 import Tilt from 'react-tilt';
+import LogoImg from './thunderstorm4.png';
 import './Logo.css';
 
 const Logo = ({ showLightning }) => {
@@ -9,7 +10,8 @@ const Logo = ({ showLightning }) => {
       	className="Tilt" 
       	options={{ max : 55 }}>
         <div className="Tilt-inner" onClick={()=>showLightning()}>
-          <span className="logoEmoji" role="img" aria-label="thunderstorm">⛈️</span>
+          <img className="logoImg" src={LogoImg} alt="thunder" />
+          {/* <span className="logoEmoji" role="img" aria-label="thunderstorm">⛈️</span> */}
           <span className="logoText">Click me to toggle rain.</span>
         </div>
       </Tilt>

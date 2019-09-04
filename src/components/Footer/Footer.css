@@ -1,77 +1,58 @@
 .FooterClass {
   background-color: rgba(0, 0, 0, 0.3);
-	width: 100%;
-  position: sticky;
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  padding-bottom: 10px;
+}
+
+.FooterTitle {
+  color: white;
+  display: block;
+  margin-top: 4px;
+  border-bottom: 1px solid white;
+}
+
+.FooterGrid {
+  width: 100%;
   display: grid;
   grid-template-columns: 4fr 4fr 4fr;
-  padding: 20px;
-}
-.FooterCol1 {
-  /* display: flex;
-  justify-content: flex-start;
-  align-items: flex-start; */
-  overflow: hidden;
-}
-
-.FooterCol2 {
-  /* display: flex;
-  justify-content: flex-start;
-  align-items: flex-start; */
-  overflow: hidden;
-}
-
-.FooterCol3 {
-  /* display: flex;
-  justify-content: flex-start;
-  align-items: flex-start; */
-  overflow: hidden;
+  margin: 20px;
+  padding-top: 20px;
+  grid-gap: 20px;
 }
 
 .FooterLinkStyle {
   color: white;
   text-align: left;
   display: block;
+  margin-top: 4px;
+  line-height: 1rem;
 }
+
 .FooterLinkStyle:hover {
   color: white;
 }
 
-/* export const StyledFooter = styled.footer`
-  background-color: white;
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: grid;
-  grid-template-columns: 4fr 4fr 4fr;
-  grid-template-rows: 200px;
-  margin-top: 20px;
-  border-top: 1px solid saddlebrown;
+.FooterAuthor {
+  font-size: 14px;
+  color: white;
+  width: 100%;
+  padding-top: 30px;
+  border-top: 1px solid white;
+}
 
-  @media screen and (max-width: 550px) {
-    grid-template-columns: auto;
-    grid-template-rows: auto;
+@media screen and (max-width: 600px) {
+  .FooterGrid {
+    grid-template-columns: 1fr 1fr;
   }
-`;
-
-export const FooterColumn = styled.div`
-  padding: 10%;
-  overflow: hidden;
-
-  @media screen and (max-width: 550px) {
-    padding: 2%;
-  }
-  
-`;
-// replace with Link later
-// export const FooterLink = styled(Link)`
-export const FooterLink = styled.span`
-  cursor: pointer;
-  display: block;
-  padding-left: 10%;
-  padding-right: 10%;
-`; */
-@media screen and (max-width: 500px) {
-  .FooterClass {
-    grid-template-columns: 12fr;
+}
+@media screen and (max-width: 350px) {
+  .FooterGrid {
+    grid-template-columns: 1fr;
   }
 }
