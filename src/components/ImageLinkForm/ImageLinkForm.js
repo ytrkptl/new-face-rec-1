@@ -1,63 +1,80 @@
 import React from 'react';
 import './ImageLinkForm.css';
 
-const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
-  // plans to implement upload image in future
+const ImageLinkForm = ({ onInputChange, onButtonSubmit, changeImageUrl, client }) => {
 
-  // let imgRef = React.createRef();
-  // let canvasRef = React.createRef();
-  // let [selectedFile, fileSelectedHandler] = React.useState('');
- 
+  const options = {
+    maxFiles: 1,
+    uploadInBackground: false,
+    onOpen: () => console.log('opened!'),
+    onUploadDone: (res) => someFunction(res),
+  };
   
-  // const createUrl = (event) => {
-  //   fileSelectedHandler(selectedFile = event.target.files[0])
-  //   let objectURL = URL.createObjectURL(selectedFile);
-  //   imgRef.current.src = objectURL; 
-  // }
-  
+  const someFunction = (someObject) => {
+    if(someObject) {
+      let HANDLE = someObject.filesUploaded[0].handle;
+      fetch(`https://cdn.filestackcontent.com/imagesize/${HANDLE}`, {
+        method: 'GET',
+      })
+        .then(resp => resp.json())
+        .then(data => {
+          let height = data.height;
+          let width = data.width;
+          if (height > width) {
+            fetch(`https://cdn.filestackcontent.com/resize=height:600,width:400/${HANDLE}`, {
+              method: 'GET',
+            })
+            .then(resp => {
+              let url = resp.url;
+              changeImageUrl(url);
+            })
+            .catch(err => console.log(err))
+          } else if (height < width) {
+            fetch(`https://cdn.filestackcontent.com/resize=height:400,width:600/${HANDLE}`, {
+              method: 'GET',
+            })
+            .then(resp => {
+              let url = resp.url;
+              changeImageUrl(url);
+            })
+            .catch(err => console.log(err))
+          } else {
+            fetch(`https://cdn.filestackcontent.com/resize=height:400,width:400/${HANDLE}`, {
+              method: 'GET',
+            })
+            .then(resp => {
+              let url = resp.url;
+              changeImageUrl(url);
+            })
+            .catch(err => console.log(err))
+          }
+        })
+        .catch(err => console.log(err))
+    }
+
+
+    
+  }
+
   return (
     <div className="padded">
       <p className="textAboveForm">
         {'This Magic Brain will detect faces in your pictures. Give it a try.'}
       </p>
         <div className='form centerItHorizontally flexed'>
-          <input 
+          <input
             className='urlInput' 
             type='text' 
             placeholder="Paste image url(link) here"
             onChange={onInputChange}/>
-         {/*
-           plans to implement upload button in future.
-          <span className="urlInputSpan">Or</span>
-          <div className="fileUploadDiv">
-            <input 
-              className="fileUploadInput"
-              onChange={(event)=>createUrl(event)}
-              type="file"
-              name="image"
-              multiple={false}
-              accept="image/*"/>
-            <span className="fileUploadSpan">Upload an image</span>
-          </div>
-        */}
           <button
             className='detectButton'
             onClick={onButtonSubmit}>
             Detect
           </button>
+          <span className="urlInputSpan">Or</span> 
+          <button className="fileUploadButton" onClick={()=>client.picker(options).open()}>Upload an image</button>
         </div>
-        {/*
-          <canvas
-           ref={canvasRef}
-            />
-          <img 
-            ref={imgRef}
-            id="hmm"
-            src='' 
-            width="400"
-            height="auto" 
-            alt="" />
-        */}
     </div>
   );
 }

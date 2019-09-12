@@ -10,8 +10,11 @@ import Modal from '../components/Modal/Modal';
 import Profile from '../components/Profile/Profile';
 import Footer from '../components/Footer/Footer';
 import Lightning from '../components/Lightning/Lightning';
+import * as filestack from 'filestack-js';
 
 import './App.css';
+
+const client = filestack.init(`${process.env.REACT_APP_FILESTACK}`);
 
 // Create-React-App automatically detects and uses env varialbes
 // prefixed with REACT_APP_ during local development
@@ -126,7 +129,8 @@ class App extends Component {
   }
 
   changeImageUrl = (source) => {
-    this.setState({imageToChange: source})
+    this.setState({input: source})
+    this.onButtonSubmit();
   }
 
   onButtonSubmit = () => {
@@ -235,7 +239,6 @@ class App extends Component {
               toggleModal={this.toggleModal} 
               loadUser={this.loadUser} 
               imageToChange={this.state.imageToChange}
-              changeImageUrl={this.changeImageUrl}
               user={user}/>
           </Modal>
         }
@@ -249,6 +252,8 @@ class App extends Component {
               <ImageLinkForm
                 onInputChange={this.onInputChange}
                 onButtonSubmit={this.onButtonSubmit}
+                changeImageUrl={this.changeImageUrl}
+                client={client}
               />
               <FaceRecognition boxes={boxes} imageUrl={imageUrl} />
             </div>
