@@ -9,7 +9,6 @@ class Profile extends React.Component {
 			name: this.props.user.name,
 			age: this.props.user.age,
 			pet: this.props.user.pet,
-			src: this.props.imageToChange
 		}
 	}
 
@@ -45,17 +44,46 @@ class Profile extends React.Component {
 		}).catch(console.log)
 	}
 
+  triggerPhotoChange = () => {
+		const client = this.props.client;
+		const options = {
+			maxFiles: 1,
+			uploadInBackground: false,
+			onOpen: () => console.log('opened!'),
+			onUploadDone: (res) => uploadPhotoFunction(res),
+		};
+
+		client.picker(options).open()
+
+    const uploadPhotoFunction = (someObject) => {
+			if(someObject) {
+				let HANDLE = someObject.filesUploaded[0].handle;
+				fetch(`https://cdn.filestackcontent.com/resize=height:400,width:400/${HANDLE}`, {
+					method: 'GET',
+				})
+				.then(resp => {
+					let url = resp.url;
+					this.props.changeProfileImage(url, HANDLE);
+				})
+				.catch(err => console.log(err))
+			}
+		}
+	}
+
 	render() {
-		const { user } = this.props;
+		const { user, imageToChange } = this.props;
 		const { name, age, pet } = this.state;
 		return (
 			<div className="profile-modal">
 				<article className="responsive">
 	        <main className="main">
-	        	<div className="centerThatDiv">
+					<div className="centerThatDiv">
 		        	<img
-					      src={this.state.src}
-					      className="avatarImageInProfile" alt="avatar" />
+								src={imageToChange}
+								name="user-photo"
+								className="avatarImageInProfile" 
+								alt="avatar" />
+							<button className="changePhotoButton" onClick={()=>this.triggerPhotoChange()}>Change Profile Photo</button>
 				    </div>
 	          <h1>{this.state.name}</h1>
 	          <h4>{`Images Submitted: ${user.entries}`}</h4>

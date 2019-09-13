@@ -41,6 +41,10 @@
 
 .centerThatDiv {
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .avatarImageInProfile {
@@ -48,6 +52,11 @@
 	border: 1px solid black;
 	width: 200px;
 	max-width: 100%;
+}
+.changePhotoButton {
+	font-size: 12px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 /*br-100 ba dib mr2*/
 .labelForUsername {

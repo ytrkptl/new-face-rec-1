@@ -12,7 +12,7 @@ class ProfileIcon extends React.Component {
 		super(props);
 		this.state = {
 			dropdownOpen: false,
-			imageToChange: this.props.imageToChange
+			// imageToChange: this.props.imageToChange
 		}
 	}
 
@@ -23,6 +23,7 @@ class ProfileIcon extends React.Component {
   }
 
 	render() {
+		const { imageToChange } = this.props;
 		return (
 			<div className="dropdownParentDiv">
 				<Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
@@ -32,7 +33,7 @@ class ProfileIcon extends React.Component {
 	          aria-expanded={this.state.dropdownOpen}>
 				  	<img 
 				  		className="homeAvatarImage" 
-				  		src={this.state.imageToChange} 
+				  		src={imageToChange} 
 				  		alt="avatar"/>
 	        </DropdownToggle>
 	        <DropdownMenu 
@@ -40,7 +41,7 @@ class ProfileIcon extends React.Component {
 	        	className="dropdownMenuStyle" 
 	        	/*needed to inject some styles directly*/
 	        	style={{marginTop: '10px', right: 0, backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
-	          <DropdownItem onClick={this.props.toggleModal}>View Profile</DropdownItem>
+	          <DropdownItem onClick={()=>this.props.toggleModal()}>View Profile</DropdownItem>
 	          <DropdownItem onClick={()=>this.props.onRouteChange('signout')}>Sign Out</DropdownItem>
 	        </DropdownMenu>
 	      </Dropdown>

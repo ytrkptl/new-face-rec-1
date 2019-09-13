@@ -50,10 +50,7 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit, changeImageUrl, client }
           }
         })
         .catch(err => console.log(err))
-    }
-
-
-    
+    } 
   }
 
   return (

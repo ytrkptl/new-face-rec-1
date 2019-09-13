@@ -28,7 +28,7 @@ const initialState = {
   isSignedIn: false,
   isProfileOpen: false,
   lightningOn: false,
-  imageToChange: 'http://tachyons.io/img/logo.jpg',
+  imageToChange: '',
   user: {
     id: '',
     name: '',
@@ -36,7 +36,8 @@ const initialState = {
     entries: 0,
     joined: '',
     pet: '',
-    age: 30
+    age: 30,
+    handle: ''
   }
 }
 
@@ -88,8 +89,14 @@ class App extends Component {
       entries: data.entries,
       joined: data.joined,
       pet: data.pet,
-      age: data.age
+      age: data.age,
+      handle: data.handle
     }})
+    if (data.handle === '' || data.handle === undefined || data.handle===null) {
+      this.setState({imageToChange: 'http://tachyons.io/img/logo.jpg'})
+    } else {
+      this.setState({imageToChange: `https://cdn.filestackcontent.com/resize=height:400,width:400/${data.handle}`})
+    }
   }
 
   calculateFaceLocations = (data) => {
@@ -206,6 +213,23 @@ class App extends Component {
     }))
   }
 
+  changeProfileImage = (url, handle) => {
+    this.setState({imageToChange: `${url}`})
+    
+    fetch(`${process.env.REACT_APP_ENDPOINT_URL}/upload/${this.state.user.id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': window.sessionStorage.getItem('token')
+      },
+      body: JSON.stringify({
+        handle: handle
+      })
+    })
+    .then(resp => console.log(resp))
+    .catch(err => console.log(err))
+  }
+
   showLightning = () => {
     this.setState(prevState => ({
       ...prevState,
@@ -239,6 +263,8 @@ class App extends Component {
               toggleModal={this.toggleModal} 
               loadUser={this.loadUser} 
               imageToChange={this.state.imageToChange}
+              changeProfileImage={this.changeProfileImage}
+              client={client}
               user={user}/>
           </Modal>
         }
