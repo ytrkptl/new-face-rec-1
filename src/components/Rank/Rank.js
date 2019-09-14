@@ -31,13 +31,16 @@ class Rank extends React.Component {
 		return(
 			<div className="rankParent">
 				<div className='rankText'>
-		        	{`${this.props.name}, your current entry count is...`}
-		      	</div>
+					{`${this.props.name}, your current entry count is...`}
+				</div>
 				<div className='rankNumber'>
 					{this.props.entries}
 				</div>
 				<div className='rankText'>
 					{`Rank Badge: ${this.state.emoji}`}
+				</div>
+				<div className='rankText'>
+					{`This Magic Brain will detect faces in your pictures. Give it a try.`}
 				</div>
 			</div>
 		)

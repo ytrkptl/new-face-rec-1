@@ -4,7 +4,7 @@ import Navigation from '../components/Navigation/Navigation';
 import FaceRecognition from '../components/FaceRecognition/FaceRecognition';
 import Signin from '../components/Signin/Signin';
 import Register from '../components/Register/Register';
-import ImageLinkForm from '../components/ImageLinkForm/ImageLinkForm';
+import UploadButtonWithPicker from '../components/UploadButtonWithPicker/UploadButtonWithPicker';
 import Rank from '../components/Rank/Rank';
 import Modal from '../components/Modal/Modal';
 import Profile from '../components/Profile/Profile';
@@ -26,7 +26,6 @@ const client = filestack.init(`${process.env.REACT_APP_FILESTACK}`);
 // The config vars for production are stored in heroku itself.
 
 const initialState = {
-  input: '',
   imageUrl: '',
   boxes: [],
   route: 'signin',
@@ -85,7 +84,6 @@ class App extends Component {
     }
   }
 
-
   loadUser = (data) => {
     this.setState({user: {
       id: data.id,
@@ -128,10 +126,6 @@ class App extends Component {
     }
   }
 
-  onInputChange = (event) => {
-    this.setState({input: event.target.value});
-  }
-
   saveAuthTokenInSession = (token) => {
     window.sessionStorage.setItem('token', token);
   }
@@ -141,44 +135,43 @@ class App extends Component {
   }
 
   changeImageUrl = (source) => {
-    this.setState({input: source})
+    this.setState({imageUrl: source});
     this.onButtonSubmit();
   }
 
   onButtonSubmit = () => {
-    this.setState({imageUrl: this.state.input});
-      fetch(`${process.env.REACT_APP_ENDPOINT_URL}/imageurl`, {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': window.sessionStorage.getItem('token')
-        },
-        body: JSON.stringify({
-          input: this.state.input
-        })
+    fetch(`${process.env.REACT_APP_ENDPOINT_URL}/imageurl`, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': window.sessionStorage.getItem('token')
+      },
+      body: JSON.stringify({
+        input: this.state.imageUrl
       })
-      .then(response => response.json())
-      .then(response => {
-        if (response) {
-          fetch(`${process.env.REACT_APP_ENDPOINT_URL}/image`, {
-            method: 'put',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': window.sessionStorage.getItem('token')
-            },
-            body: JSON.stringify({
-              id: this.state.user.id
-            })
+    })
+    .then(response => response.json())
+    .then(response => {
+      if (response) {
+        fetch(`${process.env.REACT_APP_ENDPOINT_URL}/image`, {
+          method: 'put',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': window.sessionStorage.getItem('token')
+          },
+          body: JSON.stringify({
+            id: this.state.user.id
           })
-            .then(response => response.json())
-            .then(count => {
-              this.setState(Object.assign(this.state.user, { entries: count}))
-            })
-            .catch(console.log)
-        }
-        this.displayFaceBox(this.calculateFaceLocations(response))
-      })
-      .catch(err => console.log(err));
+        })
+          .then(response => response.json())
+          .then(count => {
+            this.setState(Object.assign(this.state.user, { entries: count}))
+          })
+          .catch(console.log)
+      }
+      this.displayFaceBox(this.calculateFaceLocations(response))
+    })
+    .catch(err => console.log(err));
   }
 
   onRouteChange = (route) => {
@@ -280,9 +273,7 @@ class App extends Component {
                 name={this.state.user.name}
                 entries={this.state.user.entries}
               />
-              <ImageLinkForm
-                onInputChange={this.onInputChange}
-                onButtonSubmit={this.onButtonSubmit}
+              <UploadButtonWithPicker
                 changeImageUrl={this.changeImageUrl}
                 client={client}
               />
