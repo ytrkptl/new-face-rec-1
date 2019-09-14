@@ -95,7 +95,7 @@ class App extends Component {
     if (data.handle === '' || data.handle === undefined || data.handle===null) {
       this.setState({imageToChange: 'http://tachyons.io/img/logo.jpg'})
     } else {
-      this.setState({imageToChange: `https://cdn.filestackcontent.com/resize=height:400,width:400/${data.handle}`})
+      this.setState({imageToChange: `https://cdn.filestackcontent.com/resize=height:200,width:200/${data.handle}`})
     }
   }
 

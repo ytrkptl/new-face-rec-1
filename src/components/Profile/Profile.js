@@ -1,5 +1,4 @@
 import React from 'react';
-// import AvatarPicker from './AvatarPicker';
 import './Profile.css';
 
 class Profile extends React.Component {
@@ -58,7 +57,7 @@ class Profile extends React.Component {
     const uploadPhotoFunction = (someObject) => {
 			if(someObject) {
 				let HANDLE = someObject.filesUploaded[0].handle;
-				fetch(`https://cdn.filestackcontent.com/resize=height:400,width:400/${HANDLE}`, {
+				fetch(`https://cdn.filestackcontent.com/resize=height:200,width:200/${HANDLE}`, {
 					method: 'GET',
 				})
 				.then(resp => {
