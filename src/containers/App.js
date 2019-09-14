@@ -11,10 +11,15 @@ import Profile from '../components/Profile/Profile';
 import Footer from '../components/Footer/Footer';
 import Lightning from '../components/Lightning/Lightning';
 import * as filestack from 'filestack-js';
+import ReactGA from 'react-ga';
 
 import './App.css';
 
+ReactGA.initialize(`${process.env.REACT_APP_GA_TRACKING_ID}`);
+ReactGA.pageview(window.location.pathname + window.location.search);
 const client = filestack.init(`${process.env.REACT_APP_FILESTACK}`);
+
+
 
 // Create-React-App automatically detects and uses env varialbes
 // prefixed with REACT_APP_ during local development
