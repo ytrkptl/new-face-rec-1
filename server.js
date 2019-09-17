@@ -5,6 +5,8 @@ const knex = require('knex');
 const bcrypt = require('bcrypt');
 const morgan = require('morgan');
 
+const path = require('path');
+
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
