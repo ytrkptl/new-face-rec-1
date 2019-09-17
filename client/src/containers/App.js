@@ -5,18 +5,19 @@ import FaceRecognition from '../components/FaceRecognition/FaceRecognition';
 import Signin from '../components/Signin/Signin';
 import Register from '../components/Register/Register';
 import UploadButtonWithPicker from '../components/UploadButtonWithPicker/UploadButtonWithPicker';
+import UploadToCloudinary from '../components/UploadToCloudinary/UploadToCloudinary';
 import Rank from '../components/Rank/Rank';
 import Modal from '../components/Modal/Modal';
 import Profile from '../components/Profile/Profile';
 import Footer from '../components/Footer/Footer';
 import Lightning from '../components/Lightning/Lightning';
 import * as filestack from 'filestack-js';
-import ReactGA from 'react-ga';
+// import ReactGA from 'react-ga';
 
 import './App.css';
 
-ReactGA.initialize(`${process.env.REACT_APP_GA_TRACKING_ID}`);
-ReactGA.pageview(window.location.pathname + window.location.search);
+// ReactGA.initialize(`${process.env.REACT_APP_GA_TRACKING_ID}`);
+// ReactGA.pageview(window.location.pathname + window.location.search);
 const client = filestack.init(`${process.env.REACT_APP_FILESTACK}`);
 
 
@@ -54,8 +55,9 @@ class App extends Component {
   componentDidMount() {
     const token = window.sessionStorage.getItem('token');
     if (token) {
-      fetch(`${process.env.REACT_APP_ENDPOINT_URL}/signin`, {
-        method: 'POST',
+      // fetch(`${process.env.REACT_APP_ENDPOINT_URL}/signin`, {
+      fetch(`signin`, {
+          method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': token
@@ -64,8 +66,9 @@ class App extends Component {
         .then(resp => resp.json())
         .then(data => {
           if(data && data.id) {
-            fetch(`${process.env.REACT_APP_ENDPOINT_URL}/profile/${data.id}`, {
-              method: 'GET',
+            // fetch(`${process.env.REACT_APP_ENDPOINT_URL}/profile/${data.id}`, {
+            fetch(`profile/${data.id}`, {
+                method: 'GET',
               headers: {
                 'Content-Type': 'application/json',
                 'Authorization': token
@@ -140,8 +143,9 @@ class App extends Component {
   }
 
   onButtonSubmit = () => {
-    fetch(`${process.env.REACT_APP_ENDPOINT_URL}/imageurl`, {
-      method: 'post',
+    // fetch(`${process.env.REACT_APP_ENDPOINT_URL}/imageurl`, {
+    fetch(`imageurl`, {
+        method: 'post',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': window.sessionStorage.getItem('token')
@@ -153,8 +157,9 @@ class App extends Component {
     .then(response => response.json())
     .then(response => {
       if (response) {
-        fetch(`${process.env.REACT_APP_ENDPOINT_URL}/image`, {
-          method: 'put',
+        // fetch(`${process.env.REACT_APP_ENDPOINT_URL}/image`, {
+        fetch(`image`, {
+            method: 'put',
           headers: {
             'Content-Type': 'application/json',
             'Authorization': window.sessionStorage.getItem('token')
@@ -183,8 +188,9 @@ class App extends Component {
       // therefore the below fetch function, which removes it from
       // redis first and then call the removeAuthTokenFromSession func
       // above
-      fetch(`${process.env.REACT_APP_ENDPOINT_URL}/signout`, {
-        method: 'DELETE',
+      // fetch(`${process.env.REACT_APP_ENDPOINT_URL}/signout`, {
+      fetch(`signout`, {
+          method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': window.sessionStorage.getItem('token')
@@ -214,8 +220,9 @@ class App extends Component {
   changeProfileImage = (url, handle) => {
     this.setState({imageToChange: `${url}`})
     
-    fetch(`${process.env.REACT_APP_ENDPOINT_URL}/upload/${this.state.user.id}`, {
-      method: 'POST',
+    // fetch(`${process.env.REACT_APP_ENDPOINT_URL}/upload/${this.state.user.id}`, {
+    fetch(`upload/${this.state.user.id}`, {
+        method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': window.sessionStorage.getItem('token')
@@ -277,6 +284,9 @@ class App extends Component {
                 changeImageUrl={this.changeImageUrl}
                 client={client}
               />
+              <UploadToCloudinary 
+                changeImageUrl={this.changeImageUrl}
+                client={client} />
               <FaceRecognition boxes={boxes} imageUrl={imageUrl} />
             </div>
           : 

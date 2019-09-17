@@ -1,0 +1,47 @@
+.cloudinaryDiv {
+	overflow-y: scroll;
+}
+.fileUploadButton {
+	background-color: rgba(0,0,0,0.8);
+	color: white;
+	padding: 14px 10px;
+	min-width: 168.84px;
+	outline: none;
+	border: none;
+	margin-top: 20px;
+}
+
+.fileUploadDiv {
+	display: flex;
+	position: relative;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	transition: all 0.3s ease;
+	width: 160px;
+	box-sizing: border-box;
+	margin: auto;
+	margin-top: 40px;
+}
+.fileUploadDiv:hover {
+	transform: scale(1.05);
+}
+
+.fileUploadInput {
+	opacity: 0;
+	padding: 10px;
+	z-index: 1;
+	width: 160px;
+	box-sizing: border-box;
+}
+
+.fileUploadSpan {
+	position: absolute;
+	background-color: rgba(0,0,0,0.8);
+	z-index: 0;
+	color: white;
+	padding: 14px 10px;
+	width: 160px;
+	box-sizing: border-box;
+	text-align: center;
+}

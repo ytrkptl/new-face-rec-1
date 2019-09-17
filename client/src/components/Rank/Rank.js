@@ -40,7 +40,7 @@ class Rank extends React.Component {
 					{`Rank Badge: ${this.state.emoji}`}
 				</div>
 				<div className='rankText'>
-					{`This Magic Brain will detect faces in your pictures. Give it a try.`}
+					{`This App will detect faces in your photos. Give it a try.`}
 				</div>
 			</div>
 		)
