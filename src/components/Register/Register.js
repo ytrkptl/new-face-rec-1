@@ -31,9 +31,8 @@ class Register extends React.Component {
   }
 
   onRegister = () => {
-    // fetch(`${process.env.REACT_APP_ENDPOINT_URL}/register`, {
-    fetch(`register`, {
-        method: 'POST',
+    fetch(`${process.env.REACT_APP_ENDPOINT_URL}/register`, {
+      method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         email: this.state.email,
@@ -45,9 +44,8 @@ class Register extends React.Component {
       .then(data => {
         if(data.userId && data.success === 'true') {
           this.saveAuthTokenInSession(data.token)
-          // fetch(`${process.env.REACT_APP_ENDPOINT_URL}/profile/${data.userId}`, {
-          fetch(`profile/${data.userId}`, {
-              method: 'GET',
+          fetch(`${process.env.REACT_APP_ENDPOINT_URL}/profile/${data.userId}`, {
+            method: 'GET',
             headers: {
               'Content-Type': 'application/json',
               'Authorization': data.token
