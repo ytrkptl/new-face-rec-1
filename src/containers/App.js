@@ -5,7 +5,7 @@ import FaceRecognition from '../components/FaceRecognition/FaceRecognition';
 import Signin from '../components/Signin/Signin';
 import Register from '../components/Register/Register';
 import UploadButtonWithPicker from '../components/UploadButtonWithPicker/UploadButtonWithPicker';
-import UploadToCloudinary from '../components/UploadToCloudinary/UploadToCloudinary';
+// import UploadToCloudinary from '../components/UploadToCloudinary/UploadToCloudinary';
 import Rank from '../components/Rank/Rank';
 import Modal from '../components/Modal/Modal';
 import Profile from '../components/Profile/Profile';
@@ -278,9 +278,9 @@ class App extends Component {
                 changeImageUrl={this.changeImageUrl}
                 client={client}
               />
-              <UploadToCloudinary 
+              {/* <UploadToCloudinary 
                 changeImageUrl={this.changeImageUrl}
-                client={client} />
+                client={client} /> */}
               <FaceRecognition boxes={boxes} imageUrl={imageUrl} />
             </div>
           : 
