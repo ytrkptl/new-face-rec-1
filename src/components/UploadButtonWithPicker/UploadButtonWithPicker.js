@@ -30,7 +30,6 @@ const UploadButtonWithPicker = ({ changeImageUrl, client }) => {
             : widthToUse = Math.round(ww * 0.90);
             ww > 650 ? heightToUse = 600
             : heightToUse = Math.round(widthToUse * 1.5);
-            console.log(widthToUse, heightToUse);
             fetch(`https://cdn.filestackcontent.com/resize=height:${heightToUse},width:${widthToUse}/${HANDLE}`, {
               method: 'GET',
             })
@@ -48,7 +47,6 @@ const UploadButtonWithPicker = ({ changeImageUrl, client }) => {
             : widthToUse = Math.round(ww * 0.9);
             ww > 650 ? heightToUse = 400
             : heightToUse = Math.round(widthToUse * 0.67);
-            console.log(widthToUse, heightToUse);
             fetch(`https://cdn.filestackcontent.com/resize=height:${heightToUse},width:${widthToUse}/${HANDLE}`, {
               method: 'GET',
             })

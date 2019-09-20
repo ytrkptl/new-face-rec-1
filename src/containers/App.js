@@ -20,8 +20,6 @@ ReactGA.initialize(`${process.env.REACT_APP_GA_TRACKING_ID}`);
 ReactGA.pageview(window.location.pathname + window.location.search);
 const client = filestack.init(`${process.env.REACT_APP_FILESTACK}`);
 
-
-
 // Create-React-App automatically detects and uses env varialbes
 // prefixed with REACT_APP_ during local development
 // The config vars for production are stored in heroku itself.
@@ -278,9 +276,7 @@ class App extends Component {
                 changeImageUrl={this.changeImageUrl}
                 client={client}
               />
-              {/* <UploadToCloudinary 
-                changeImageUrl={this.changeImageUrl}
-                client={client} /> */}
+              {/* <UploadToCloudinary changeImageUrl={this.changeImageUrl}/> */}
               <FaceRecognition boxes={boxes} imageUrl={imageUrl} />
             </div>
           : 
