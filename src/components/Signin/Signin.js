@@ -94,7 +94,7 @@ class Signin extends React.Component {
             </div>
             
             <div className="belowSigninButtonDiv">
-              <p  onClick={() => onRouteChange('forgot')} className="registerLinkInSignin">Forgot Password</p>
+              {/* <p  onClick={() => onRouteChange('forgot')} className="registerLinkInSignin">Forgot Password</p> */}
               <p  onClick={() => onRouteChange('register')} className="registerLinkInSignin">Register</p>
             </div>
           </div>
