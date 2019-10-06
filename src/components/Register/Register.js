@@ -1,4 +1,5 @@
 import React from 'react';
+import Spinner from '../Spinner/Spinner';
 import './Register.css';
 
 class Register extends React.Component {
@@ -10,7 +11,8 @@ class Register extends React.Component {
       name: '',
       error: `Something went wrong. 
               Please try again.`,
-      showError: false
+      showError: false,
+      showSpinner: false
     }
   }
 
@@ -31,6 +33,7 @@ class Register extends React.Component {
   }
 
   onRegister = () => {
+    this.setState({showSpinner: true})
     fetch(`${process.env.REACT_APP_ENDPOINT_URL}/register`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -64,7 +67,7 @@ class Register extends React.Component {
       })
       .catch(err => {
         if(err) {
-          this.setState({showError: true})
+          this.setState({showError: true, showSpinner: false})
         }
       })
   }
@@ -114,6 +117,7 @@ class Register extends React.Component {
                 />
               </div>
             </fieldset>
+            <Spinner showSpinner={this.state.showSpinner} />
             <div>
               <input
                 onClick={this.onRegister}

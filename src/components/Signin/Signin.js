@@ -1,4 +1,5 @@
 import React from 'react';
+import Spinner from '../Spinner/Spinner';
 import './Signin.css';
 
 class Signin extends React.Component {
@@ -9,7 +10,8 @@ class Signin extends React.Component {
       signInPassword: '',
       error: `Something went wrong. 
               Please try again.`,
-      showError: false
+      showError: false,
+      showSpinner: false
     }
   }
 
@@ -22,6 +24,7 @@ class Signin extends React.Component {
   }
 
   onSubmitSignIn = () => {
+    this.setState({showSpinner: true})
     fetch(`${process.env.REACT_APP_ENDPOINT_URL}/signin`, {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
@@ -42,7 +45,7 @@ class Signin extends React.Component {
       })
       .catch(err => {
         if(err) {
-          this.setState({showError: true})
+          this.setState({showError: true, showSpinner: false})
         }
       })
   }
@@ -80,6 +83,7 @@ class Signin extends React.Component {
                 />
               </div>
             </fieldset>
+            <Spinner showSpinner={this.state.showSpinner} />
             <div>
               <input
                 onClick={this.onSubmitSignIn}
@@ -88,7 +92,9 @@ class Signin extends React.Component {
                 value="Sign in"
               />
             </div>
+            
             <div className="belowSigninButtonDiv">
+              <p  onClick={() => onRouteChange('forgot')} className="registerLinkInSignin">Forgot Password</p>
               <p  onClick={() => onRouteChange('register')} className="registerLinkInSignin">Register</p>
             </div>
           </div>
