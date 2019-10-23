@@ -25,4 +25,3 @@ yarn-debug.log*
 yarn-error.log*
 /src/components/MaskBar
 /src/components/UploadToCloudinary
-/src/components/Forgot

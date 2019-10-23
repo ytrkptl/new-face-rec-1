@@ -4,6 +4,7 @@ import Navigation from '../components/Navigation/Navigation';
 import FaceRecognition from '../components/FaceRecognition/FaceRecognition';
 import Signin from '../components/Signin/Signin';
 import Register from '../components/Register/Register';
+import Forgot from '../components/Forgot/Forgot';
 import UploadButtonWithPicker from '../components/UploadButtonWithPicker/UploadButtonWithPicker';
 // import UploadToCloudinary from '../components/UploadToCloudinary/UploadToCloudinary';
 import Rank from '../components/Rank/Rank';
@@ -266,8 +267,8 @@ class App extends Component {
           </Modal>
         }
         <div className="row2">
-        { route === 'home'
-          ? <div className="rankAndImageFormWrapper">
+          {route === 'home' &&
+            <div className="rankAndImageFormWrapper">
               <Rank
                 name={this.state.user.name}
                 entries={this.state.user.entries}
@@ -279,16 +280,17 @@ class App extends Component {
               {/* <UploadToCloudinary changeImageUrl={this.changeImageUrl}/> */}
               <FaceRecognition boxes={boxes} imageUrl={imageUrl} />
             </div>
-          : 
-            (
-             route === 'signin'
-             ? <Signin 
-                 loadUser={this.loadUser} 
-                 saveAuthTokenInSession={this.saveAuthTokenInSession}
-                 onRouteChange={this.onRouteChange}/>
-             : <Register className="row2" loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-            )
-        }
+          }
+          {route === 'signin' &&
+            <Signin 
+              loadUser={this.loadUser} 
+              saveAuthTokenInSession={this.saveAuthTokenInSession}
+              onRouteChange={this.onRouteChange}/>
+          }
+          {route === 'register' &&
+            <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+          }
+          {route==='forgot' && <Forgot onRouteChange={this.onRouteChange} />}
         </div>
         <Footer className="row3"/>
       </div>
