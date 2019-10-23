@@ -38,8 +38,7 @@ class Forgot extends React.Component {
 
   onSubmitForgotStep1 = () => {
     this.setState({showSpinner: true});
-    // fetch(`${process.env.REACT_APP_ENDPOINT_URL}/forgot`, {
-    fetch(`http://localhost:3000/forgot`, {
+    fetch(`${process.env.REACT_APP_ENDPOINT_URL}/forgot`, {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -61,8 +60,7 @@ class Forgot extends React.Component {
 
   onSubmitResetId = () => {
     this.setState({showSpinner: true});
-    // fetch(`${process.env.REACT_APP_ENDPOINT_URL}/forgot`, {
-    fetch(`http://localhost:3000/reset`, {
+    fetch(`${process.env.REACT_APP_ENDPOINT_URL}/forgot`, {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -84,8 +82,7 @@ class Forgot extends React.Component {
 
   onPasswordReset = () => {
     this.setState({showSpinner: true});    
-    // fetch(`${process.env.REACT_APP_ENDPOINT_URL}/forgot`, {
-    fetch(`http://localhost:3000/update-new-password`, {
+    fetch(`${process.env.REACT_APP_ENDPOINT_URL}/forgot`, {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
