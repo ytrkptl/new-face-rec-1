@@ -51,9 +51,18 @@
 
 .registerErrorDisplay {
 	color: red;
-	font-family: Roboto, sans-serif;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	width: 230.44px;
+	display: flex;
+	justify-content: center;
+	word-wrap: break-word;
+	margin: auto;
 }
 
+.registerFieldsError {
+	margin-top: -20px;
+}
 .belowLegendDiv {
 	margin: 10px 0px;
 }
@@ -73,10 +82,14 @@
 	border: 1px solid black;
 	width: 100%;
 	outline: none;
+	margin: auto;
+	margin-bottom: 20px;
+	width: 230.44px;
+	display: block;
 }
 
 .belowLegendInput::placeholder {
-	color: rgb(24, 24, 24);
+	color: rgb(153, 153, 153);
 }
 
 .belowLegendInput:hover {
@@ -88,6 +101,22 @@
 .passwordInRegisterDiv {
 	margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.highlightClassInRegister {
+	border: 2px solid red;
+}
+.highlightClassInRegister:hover {
+	border: 2px solid red;
+}
+.highlightClassInRegister:active, .highlightClassInRegister:focus {
+	border: 2px solid red;
+}
+.highlightClassInRegister:invalid {
+	border: 2px solid red;
+}
+.highlightClassInRegister:valid {
+	border: 1px solid black;
 }
 
 .registerButton {
@@ -134,6 +163,21 @@
 	font-weight: bold;
 	transform: scale(1.05);
 }
+
+.step2Link {
+	color: blue;
+	text-decoration: underline;
+}
+
+.registerStep2 {
+	color: blue;
+}
+
+.registerStep2:nth-child(2) {
+	color: blue;
+	text-decoration: underline;
+}
+
 @media screen and (max-width: 600px) {
 	.registerArticle {
 		max-width: 94%;
