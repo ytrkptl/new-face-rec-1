@@ -51,7 +51,17 @@
 
 .signinErrorDisplay {
 	color: red;
-	font-family: Roboto, sans-serif;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	width: 230.44px;
+	display: flex;
+	justify-content: center;
+	word-wrap: break-word;
+	margin: auto;
+}
+
+.signinFieldsError {
+	margin-top: -20px;
 }
 
 .belowLegendDivInSignin {
@@ -72,8 +82,11 @@
 	-webkit-appearance: none;
 	border: 1px solid black;
 	width: 100%;
-	margin-bottom: 10px;
 	outline: none;
+	margin: auto;
+	margin-bottom: 20px;
+	width: 230.44px;
+	display: block;
 }
 
 .belowLegendInputInSignin::placeholder {
@@ -84,6 +97,22 @@
 	background-color: #000;
 	border-color: white;
 	color: white;
+}
+
+.highlightClassInSignIn {
+	border: 2px solid red;
+}
+.highlightClassInSignIn:hover {
+	border: 2px solid red;
+}
+.highlightClassInSignIn:active, .highlightClassInSignIn:focus {
+	border: 2px solid red;
+}
+.highlightClassInSignIn:invalid {
+	border: 2px solid red;
+}
+.highlightClassInSignIn:valid {
+	border: 1px solid black;
 }
 
 .signinButtonInSignin {
