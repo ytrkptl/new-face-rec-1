@@ -111,6 +111,8 @@ class Register extends React.Component {
   onEnterKeyPressOnEmail = (event) => {
     if(event.key === 'Enter' && this.state.registerEmail==='') {
       this.onEmailError(true)
+    } else if(event.key === 'Enter' && this.registerEmailRef.current.validity.typeMismatch) {
+      this.onEmailError(true)
     } else if(event.key === 'Enter' && !this.registerEmailRef.current.validity.typeMismatch) {
       this.onEmailError(false)
       if(this.state.registerName==='') {
@@ -141,6 +143,8 @@ class Register extends React.Component {
 
   onEnterKeyPressOnPassword = (event) => {
     if(event.key === 'Enter' && this.state.registerPassword.length<8) {
+      this.onPasswordError(true)
+    } else if(event.key === 'Enter' && !this.registerPasswordRef.current.validity.valid) {
       this.onPasswordError(true)
     } else if(event.key === 'Enter' && this.state.registerPassword.length>=8) {
       this.onPasswordError(false)

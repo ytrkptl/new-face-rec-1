@@ -57,6 +57,8 @@ class Signin extends React.Component {
   onEnterKeyPressOnEmail = (event) => {
     if(event.key === 'Enter' && this.state.signInEmail==='') {
       this.onEmailError(true)
+    } else if(event.key === 'Enter' && this.emailRef.current.validity.typeMismatch) {
+      this.onEmailError(true)
     } else if(event.key === 'Enter' && !this.emailRef.current.validity.typeMismatch) {
       this.onEmailError(false)
       if(this.state.signInPassword==='') {
@@ -85,6 +87,8 @@ class Signin extends React.Component {
 
   onEnterKeyPressOnPassword = (event) => {
     if(event.key === 'Enter' && this.state.signInPassword.length<8) {
+      this.onPasswordError(true)
+    } else if(event.key === 'Enter' && !this.passwordRef.current.validity.valid) {
       this.onPasswordError(true)
     } else if(event.key === 'Enter' && this.state.signInPassword.length>=8) {
       this.onPasswordError(false)
