@@ -189,20 +189,20 @@ class Signin extends React.Component {
                   onKeyDown={this.onEnterKeyPressOnPassword}
                 />
                 {
-                  this.state.showPasswordError &&
+                  this.state.showPasswordError===true &&
                   <p className="signinErrorDisplay signinFieldsError">{this.state.passwordErrorMessage}</p>
                 }
               </div>
             </fieldset>
             <Spinner showSpinner={this.state.showSpinner} />
-            <div>
+            {/* <div> */}
               <input
                 onClick={this.onSubmitSignIn}
                 className="signinButtonInSignin"
                 type="submit"
                 value="Sign in"
               />
-            </div>
+            {/* </div> */}
             
             <div className="belowSigninButtonDiv">
               <p  onClick={() => onRouteChange('forgot')} className="registerLinkInSignin">Forgot Password</p>

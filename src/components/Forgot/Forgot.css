@@ -56,11 +56,26 @@
 
 .forgotErrorDisplay {
 	color: red;
-	font-family: Roboto, sans-serif;
+	font-family: 'Roboto', sans-serif;
+	width: 230.44px;
+	display: flex;
+	justify-content: center;
+	word-wrap: break-word;
+	margin-bottom: 0px;
+	margin: auto;
+}
+
+.forgotFieldsError {
+	margin-top: 0px;
+	padding: 0;
 }
 
 .belowLegendDivInForgot {
 	margin: 10px 0px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .belowLegendLabelInForgot {
@@ -75,11 +90,11 @@
 	padding: .5rem;
 	background-color: transparent;
 	-webkit-appearance: none;
-	border-style: solid;
-	border-width: 1px;
-	width: 100%;
-	margin-bottom: 10px;
+	border: 1px solid black;
+	margin: auto;
 	outline: none;
+	width: 230.44px;
+	display: block;
 }
 
 .belowLegendInputInForgot::placeholder {
@@ -92,6 +107,39 @@
 	color: white;
 }
 
+.highlightClassInForgot {
+	border: 2px solid red;
+}
+.highlightClassInForgot:hover {
+	border: 2px solid red;
+}
+.highlightClassInForgot:active, .highlightClassInForgot:focus {
+	border: 2px solid red;
+}
+.highlightClassInForgot:invalid {
+	border: 2px solid red;
+}
+.highlightClassInForgot:valid {
+	border: 1px solid black;
+}
+
+
+.passwordsDontMatchClass {
+	border: 1px solid black;
+}
+.passwordsDontMatchClass:hover {
+	border: 1px solid black;
+}
+.passwordsDontMatchClass:active, .passwordsDontMatchClass:focus {
+	border: 1px solid black;
+}
+.passwordsDontMatchClass:invalid {
+	border: 1px solid black;
+}
+.passwordsDontMatchClass:valid {
+	border: 2px solid red;
+}
+
 .forgotButtonInForgot {
 	cursor: pointer;
 	transition: all 0.3s ease-out;
@@ -99,14 +147,16 @@
 	padding-left: 1rem;
   padding-right: 1rem;
   padding-top: .5rem;
-  padding-bottom: .5rem;
+	padding-bottom: .5rem;
   -webkit-appearance: none;
   font-weight: bold;
   display: inline-block;
   border-color: #000;
   border-style: solid;
   border-width: 1px;
-  background-color: transparent;
+	background-color: transparent;
+	margin: auto;
+	margin-top: 20px;
 }
 
 .forgotButtonInForgot:hover {
@@ -131,6 +181,9 @@
   cursor: pointer;
 	margin-top: 20px;
 	font-size: 16px;
+}
+.registerLinkInForgot:first-child{
+	margin-top: 0px;
 }
 .registerLinkInForgot:nth-child(2){
 	margin-bottom: -6px;

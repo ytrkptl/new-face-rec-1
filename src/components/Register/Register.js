@@ -384,7 +384,7 @@ class Register extends React.Component {
                   <input
                     onClick={this.onRegisterStep2}
                     className="registerButton"
-                    type="button"
+                    type="submit"
                     value="Create Account"
                   />
                 </div>
