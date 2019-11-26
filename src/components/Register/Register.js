@@ -18,10 +18,12 @@ class Register extends React.Component {
       showEmailError: false,
       showPasswordError: false,
       showConfirmationIdError: false,
+      successMessage: '',
       errorMessage: `Something went wrong. 
               Please try again.`,
       showError: false,
       showSpinner: false,
+      successData: false,
       registerStepNum: 1
     }
     this.registerNameRef = createRef()
@@ -223,12 +225,12 @@ class Register extends React.Component {
       })
       .then(response => response.json())
       .then(data => {
-          this.setState({showError: false, showSpinner: false, registerStepNum: 2, errorMessage: `${data}`})
+          this.setState({showError: false, showSpinner: false, registerStepNum: 2, successData: true, successMessage: `${data}`})
           this.signinLinkRef.current.classList.remove('step2Link')
       })
       .catch(err => {
         if(err) {
-          this.setState({showError: true, showSpinner: false, registerStepNum: 1})
+          this.setState({showError: true, showSpinner: false, successData: false, registerStepNum: 1})
         }
       })
     }
@@ -250,7 +252,7 @@ class Register extends React.Component {
       })
       .then(resp => resp.json())
       .then(data => {
-        if(data.userId && data.success === 'true') {
+        if(data.userId && data.success==="true") {
           this.saveAuthTokenInSession(data.token)
           fetch(`${process.env.REACT_APP_ENDPOINT_URL}/profile/${data.userId}`, {
             method: 'GET',
@@ -268,16 +270,16 @@ class Register extends React.Component {
           })
           .catch(err => {
             if(err) {
-              this.setState({showError: true, errorMessage: `Something went wrong. Please try again.`,showSpinner: false})
+              this.setState({showError: true, errorMessage: `Something went wrong in line 275. Please try again.`,showSpinner: false, successData: false})
             }
           })
         } else {
-          this.setState({showError: true, errorMessage: `Something went wrong. Please try again.`,showSpinner: false})
+          this.setState({showError: true, errorMessage: `Something went wrong in line 275. Please try again.`, showSpinner: false, successData: false})
         }
       })
       .catch(err => {
         if(err) {
-          this.setState({showError: true, errorMessage: `Something went wrong. Please try again.`, showSpinner: false})
+          this.setState({showError: true, errorMessage: `Something went wrong. Please try again.`, showSpinner: false, successData: false})
         }
       })
     }
@@ -294,6 +296,10 @@ class Register extends React.Component {
               {
                 this.state.showError && 
                 <p className="registerErrorDisplay">{this.state.errorMessage}</p>
+              }
+              {
+                this.state.successData && 
+                <p className="registerErrorDisplay">{this.state.successMessage}</p>
               }
               <Spinner showSpinner={this.state.showSpinner} />                  
               {
